@@ -9,6 +9,9 @@ spec:
   - name: nginx
     image: nginx:1.14.2
     resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
       limits:
         memory: "128Mi"
         cpu: "500m"
@@ -17,5 +20,4 @@ spec:
 
 #kubectl create -f pod.yaml
 # kubectl create deployment my-deployment --image nginx --dry-run=client -o yaml > my-deployment.yaml
-
----
+#HPA example: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
