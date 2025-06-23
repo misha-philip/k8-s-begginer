@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: aws-s3-backup-hourly
+spec:
+  schedule: "* /1 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: aws-s3-backup-hourly
+            image: aws-cli
+            command:
+            - aws
+            - s3
+            - cp
+            - ./*
+            - s3://backups/
+          restartPolicy: OnFailure

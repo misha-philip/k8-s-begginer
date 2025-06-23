@@ -1,0 +1,16 @@
+apiVersion: extentions/v1beta1
+kind: ingress
+metadata:
+  name: proteus-test-ingress
+  annotations:
+    nginx.org/proxy-connect-timeout: "900s"
+spec:
+  rules:
+    - host: example-app.mydomain.com
+  http: 
+    paths:
+      - backend:
+          serviceName: my-app
+          servicePort: 8080
+
+# https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers
